@@ -16,7 +16,7 @@ public class KafkaDatabaseConsumer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaDatabaseConsumer.class);
 
-    @KafkaListener(topics = "wikimedia_recentchange", groupId = "myGroup")
+    @KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
     public void consume(String eventMessage){
         WikimediaData wikimediaData = new WikimediaData();
         wikimediaData.setWikiEventData(eventMessage);
